@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	    <meta charset="utf-8" />
+	    <title>jFairy</title>
+        <meta name="viewport" content="width=740" />
+	    <meta name="description" content="" />
+	    <meta name="author" content="" />
+	    <meta name="keywords" content="" />
+	    <meta name="generator" content="JBake" />
+	
+        <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+        <link rel="stylesheet" href="stylesheets/core.css" media="screen" />
+        <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)" />
+        <link rel="stylesheet" href="stylesheets/pygment_trac.css" />
+        <link rel="stylesheet" href="stylesheets/prettify.css" />
+
+        <script type="text/javascript" src="javascripts/modernizr.js" xml:space="preserve"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" xml:space="preserve"></script>
+        <script type="text/javascript" src="javascripts/headsmart.min.js" xml:space="preserve"></script>
+        <script type="text/javascript" src="javascripts/prettify.js" xml:space="preserve"></script>
+        <script type="text/javascript" xml:space="preserve">
+          $(document).ready(function () {
+            $('#main_content').headsmart()
+          })
+        </script>
+	</head>
+	<body>
+	<div id="wrap">
+		<div>
+	
+	  <!-- Fixed navbar -->
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" shape="rect" href="">JBake</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a shape="rect" href="index.html">Home</a></li>
+            <li><a shape="rect" href="about.html">About</a></li>
+            <li><a shape="rect" href="feed.xml">Subscribe</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" shape="rect">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#" shape="rect">Action</a></li>
+                <li><a href="#" shape="rect">Another action</a></li>
+                <li><a href="#" shape="rect">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#" shape="rect">Separated link</a></li>
+                <li><a href="#" shape="rect">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+	</div>
+		<div class="container">
+	
+			<div class="page-header">
+				<h1>jFairy</h1>
+			</div>
+		
+			<p><em>11 października 2014</em></p>
+		
+			<p><h1>jFairy 2</h1><p>Java fake data generator. Based on Wikipedia:</p><h2>Adding into project</h2><p>In Maven projects (<code>pom.xml</code>):</p>
+<pre><code>&lt;pom&gt;
+    ...
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.jfairy&lt;/groupId&gt;
+            &lt;artifactId&gt;jfairy&lt;/artifactId&gt;
+            &lt;version&gt;0.2.5&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+    ...
+&lt;/pom&gt;
+</code></pre><p>In Gradle projects (build.gradle):</p>
+<pre><code>repositories {
+    mavenCentral()
+}
+...
+testCompile &#39;org.jfairy:jfairy:0.2.5&#39;
+</code></pre><h2>Usage</h2><p>Creating simple objects:</p>
+<pre><code>Fairy fairy = Fairy.create();
+Person person = fairy.person();
+
+System.out.println(person.fullName());            // Chloe Barker
+System.out.println(person.email());               // barker@yahoo.com
+System.out.println(person.telephoneNumber());     // 690-950-802
+
+Person adultMale = fairy.person(male(), minAge(21));
+System.out.println(adultMale.isMale());           // true
+System.out.println(adultMale.dateOfBirth());      // at least 21 years earlier
+</code></pre><p>Creating related objects:</p>
+<pre><code>Fairy fairy = Fairy.create();
+Company company = fairy.company();
+System.out.println(company.name());          // Robuten Associates
+System.out.println(company.url());           // http://www.robuteniaassociates.com
+
+Person salesman = fairy.person(withCompany(company));
+System.out.println(salesman.fullName());     // Juan Camacho
+System.out.println(salesman.companyEmail()); // juan.camacho@robuteniaassociates.com
+</code></pre><p>Locale support:</p>
+<pre><code>Fairy enFairy = Fairy.create();                               // Locale.ENGLISH
+Fairy plFairy = Fairy.create(Locale.forLanguageTag(&quot;pl&quot;));    // Polish version
+</code></pre><h2>Other samples</h2><p>Look into <a href="https://github.com/Codearte/fairyland/tree/master/src/test/groovy/snippets/">code samples</a></p><h2>Building</h2><p>This project can be built using gradle command:</p>
+<pre><code>./gradlew build
+</code></pre><h2>Installation</h2><p>Installation into maven local repository</p>
+<pre><code>./gradlew publishToMavenLocal
+</code></pre></p>
+		
+			<hr />
+			
+		</div>
+	</div>
+	
+    <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/Codearte" shape="rect">Codearte</a> can be found on <a href="https://github.com/Codearte/fairyland" shape="rect">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+
+        <p>Generated with <a href="http://jbake.org" shape="rect">jBake.org</a> using Merlot</p>
+        <span class="octocat"></span>
+    </footer>
+
+    </body>
+</html>
